@@ -5,7 +5,7 @@ import  {transporter,mailOptions} from "./Mail.js";
 // import  dotenv  from "dotenv";
 // dotenv.config(); //It loads the varible from .env file into process.env
 const forgotpwdRouter = express.Router();
-const feUrl="http://localhost:5174"
+const feUrl="https://dapper-boba-1da3fd.netlify.app"
 
 //const feUrl = process.env.frontendUrl || "";
 
