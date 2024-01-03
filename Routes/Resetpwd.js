@@ -6,6 +6,24 @@ import bcrypt from "bcrypt";
 
 const resetpwdRouter=express.Router();
 
+
+resetpwdRouter.get("/:id/:token", async (req, res) => {
+    const { id, token } = req.params;
+    console.log(req.params);
+    const oldUser = await userModelPwd.findOne({ _id: id });
+    if (!oldUser) {
+      return res.json({ status: "User Not Exists!!" });
+    }
+    const secret = process.env.JWT_SECRET + oldUser.password;
+    try {
+      const verify = jwt.verify(token, secret);
+      res.render("index", { email: verify.email, status: "Not Verified" });
+    } catch (error) {
+      console.log(error);
+      res.send("Not Verified");
+    }
+  });
+
 resetpwdRouter.post('/:id/:token',async(req,res)=>{
     const {id, token} = req.params
     const {password} = req.body
