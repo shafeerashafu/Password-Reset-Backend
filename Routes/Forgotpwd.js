@@ -28,8 +28,7 @@ forgotpwdRouter.post("/",async(req,res)=>{
         to: email,
         subject: 'Reset Password Link',
         text: `Hi, 
-        You have successfully registered. 
-        Please verify your registration,
+        This is your link for resetting the password,
         ${feUrl}/resetpwd/${existingUser._id}/${token}`,
       });
       res.send({ msg: "Mail sent successfully", code: 1});
