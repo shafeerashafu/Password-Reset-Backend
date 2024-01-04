@@ -17,7 +17,7 @@ resetpwdRouter.get("/:id/:token", async (req, res) => {
     const secret = process.env.JWT_SECRET + oldUser.password;
     try {
       const verify = jwt.verify(token, secret);
-      res.send({ email: verify.email, status: "Verified" });
+      res.render({ email: verify.email, status: "Not Verified" });
     } catch (error) {
       console.log(error);
       res.send("Not Verified");
