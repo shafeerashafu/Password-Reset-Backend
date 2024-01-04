@@ -4,8 +4,7 @@ import jwt  from "jsonwebtoken";
 import bcrypt from "bcrypt";
 
 const resetpwdRouter=express.Router();
-resetpwdRouter.set("view engine", "ejs");
-resetpwdRouter.use(express.urlencoded({ extended: false }));
+
 
 
 resetpwdRouter.get("/:id/:token", async (req, res) => {
@@ -18,7 +17,6 @@ resetpwdRouter.get("/:id/:token", async (req, res) => {
     const secret = process.env.JWT_SECRET + oldUser.password;
     try {
       const verify = jwt.verify(token, secret);
-      res.render("resetUI", { email: verify.email, status: "Not Verified" });
     } catch (error) {
       console.log(error);
       res.send("Not Verified");
@@ -44,8 +42,6 @@ resetpwdRouter.post('/:id/:token',async(req,res)=>{
                 }}
             )
             res.send({ msg: "Password Changed Successfully", password });
-            res.render("resetUI", { email: verify.email, status: "verified" });
-
         }
     })
 });
