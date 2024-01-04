@@ -23,6 +23,7 @@ forgotpwdRouter.post("/",async(req,res)=>{
       {
         expiresIn: "1h"
       })
+      console.log("Token while sign",token)
       await transporter.sendMail({
         ...mailOptions,
         to: email,
@@ -31,6 +32,7 @@ forgotpwdRouter.post("/",async(req,res)=>{
         This is your link for resetting the password,
         ${feUrl}/resetpwd/${existingUser._id}/${token}`,
       });
+      console.log(`${feUrl}/resetpwd/${existingUser._id}/${token}`)
       res.send({ msg: "Mail sent successfully", code: 1});
 
     }
