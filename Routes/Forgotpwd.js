@@ -2,12 +2,10 @@ import express from "express";
 import {userModelPwd} from "../Database/models.js";
 import jwt  from "jsonwebtoken";
 import  {transporter,mailOptions} from "./Mail.js";
-// import  dotenv  from "dotenv";
-// dotenv.config(); //It loads the varible from .env file into process.env
 const forgotpwdRouter = express.Router();
 const feUrl="https://dapper-boba-1da3fd.netlify.app" 
 //const feUrl="http://localhost:5174";
-//const feUrl = process.env.frontendUrl || "";
+
 
 
 //api for creating a forgot password

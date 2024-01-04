@@ -33,7 +33,6 @@ resetpwdRouter.post('/:id/:token',async(req,res)=>{
             return res.json({ Status: "Error with token" });
         } else {
             const hashedPassword = bcrypt.hashSync(password, 10);
-            //await userModelPwd.findByIdAndUpdate({ _id: id }, { password: hashedPassword });
             await userModelPwd.updateOne(
                 {
                     _id: id,

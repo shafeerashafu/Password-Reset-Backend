@@ -14,8 +14,7 @@ await connectToDb();
 server.use(express.json()); // used to parse the body of the request
 
 server.use(cors());//middleware used to make the api cors (cross-origin resource sharing) compatible
-server.set("view engine", "ejs");
-server.use(express.urlencoded({ extended: false }));
+
 
 server.use("/api/signup",signupRouter);
 server.use("/api/login",loginRouter);
